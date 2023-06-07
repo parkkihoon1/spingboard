@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurit4"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/basic.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Join Page</title>
+</head>
+<script type="text/javascript" src="../../static/js/code.jquery.com_jquery-3.7.0.min.js"></script>
+<script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="../../static/js/searchAddress.js"></script>
+<body>
+<div layout:fragment="content">
+  <div class="row mt-3">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          JOIN
+        </div>
+        <div class="card-body">
+          <form id="registerForm" action="/member/join" method="post">
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">ID</span>
+              <input type="text" name="mid" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">PW</span>
+              <input type="password" name="mpw" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Email</span>
+              <input type="email" name="email" class="form-control">
+            </div>
+
+            <div class="my-4">
+              <div class="float-end">
+                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                <Button type="reset" class="btn btn-secondary">Reset</Button>
+              </div>
+            </div>
+          </form>
+        </div> <!-- end card body -->
+      </div><!-- end card -->
+    </div> <!-- end col -->
+  </div> <!-- end row -->
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+  const error = [[${error}]]
+
+  if(error && error === 'mid'){
+    alert("동일한 ID가 존재합니다.")
+  }
+</script>
+
+
+</body>
+</html>
